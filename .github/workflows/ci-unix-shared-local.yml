@@ -84,7 +84,9 @@ jobs:
         -DAVIF_BUILD_TESTS=ON -DAVIF_ENABLE_GTEST=ON -DAVIF_LOCAL_GTEST=ON
     - name: Build libavif (ninja)
       working-directory: ./build
-      run: ninja
+      run: |
+        ninja
+        DESTDIR=../install ninja -C . install 
     - name: Run AVIF Tests
       working-directory: ./build
       run: ctest -j $(getconf _NPROCESSORS_ONLN) --output-on-failure
@@ -94,4 +96,4 @@ jobs:
         # Artifact name
         name: libavif_${{ runner.os }}_amd64_0.11.1
         # A file, directory or wildcard pattern that describes what to upload
-        path: ./build/avif*
+        path: ./install
