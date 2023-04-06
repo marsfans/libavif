@@ -116,4 +116,4 @@ jobs:
         # Artifact name
         name: libavif_windows_amd64_0.11.1
         # A file, directory or wildcard pattern that describes what to upload
-        path: ./build
+        path: ./build/*.exe

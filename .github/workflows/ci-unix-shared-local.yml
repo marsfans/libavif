@@ -88,3 +88,10 @@ jobs:
     - name: Run AVIF Tests
       working-directory: ./build
       run: ctest -j $(getconf _NPROCESSORS_ONLN) --output-on-failure
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        # Artifact name
+        name: libavif_${{ runner.os }}_amd64_0.11.1
+        # A file, directory or wildcard pattern that describes what to upload
+        path: ./build/avif*
